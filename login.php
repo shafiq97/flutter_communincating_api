@@ -22,6 +22,7 @@ if ($user && $password == $user['password']) {
     'success' => true,
     'message' => 'Login successful',
     'role' => $user['role'],
+    'email' => $user['email']
   ]);
 } else {
   // Authentication failed, return failure flag and message in JSON response
