@@ -21,7 +21,7 @@ if ($user && $password == $user['password']) {
   echo json_encode([
     'success' => true,
     'message' => 'Login successful',
-    'role' => $user['roles'],
+    'role' => $user['role'],
   ]);
 } else {
   // Authentication failed, return failure flag and message in JSON response
