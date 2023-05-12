@@ -13,9 +13,10 @@ $id = $_POST['id'];
 $title = $_POST['title'];
 $description = $_POST['description'];
 $assignee = $_POST['assignee'];
+$completed = $_POST['completed']; // Get 'completed' field
 
 // Prepare the update query
-$sql = "UPDATE tasks SET title='$title', description='$description', assignee='$assignee' WHERE id=$id";
+$sql = "UPDATE tasks SET title='$title', description='$description', assignee='$assignee', completed='$completed' WHERE id=$id";
 
 // Execute the update query
 if (mysqli_query($conn, $sql)) {
