@@ -13,6 +13,7 @@ $id          = $_POST['id'];
 $title       = $_POST['title'];
 $description = $_POST['description'];
 $assignee    = $_POST['assignee'];
+$priority    = $_POST['priority']; // added line
 
 if (isset($_POST['completed'])) {
     $completed = $_POST['completed'];
@@ -27,12 +28,13 @@ if (isset($_POST['completed'])) {
 
 if (isset($_POST['progress'])) {
     $progress = $_POST['progress'];
+    $sql      = "UPDATE tasks SET title='$title', description='$description', progress='$progress', assigned_to='$assignee', completed='$completed', status = '$status', priority = '$priority' WHERE id=$id";
 } else {
-    $progress = 0;
+    $sql = "UPDATE tasks SET title='$title', description='$description', assigned_to='$assignee', completed='$completed', status = '$status', priority = '$priority' WHERE id=$id";
+
 }
 
 // Prepare the update query
-$sql = "UPDATE tasks SET title='$title', description='$description', progress='$progress', assigned_to='$assignee', completed='$completed', status = '$status' WHERE id=$id";
 
 // Execute the update query
 if (mysqli_query($conn, $sql)) {
