@@ -5,10 +5,13 @@ require_once 'connection.php';
 header('Content-Type: application/json');
 
 // Get the email address from the request parameters
-$email = $_GET['email'];
+if(isset($_GET['email'])){
+  $email = $_GET['email'];
+  $result = mysqli_query($conn, "SELECT * FROM tasks WHERE assigned_to = '$email'");
+}else{
+  $result = mysqli_query($conn, "SELECT * FROM tasks");
+}
 
-// Query the database to fetch the tasks assigned to the user
-$result = mysqli_query($conn, "SELECT * FROM tasks WHERE assigned_to = '$email'");
 $tasks = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 // Return the tasks in a JSON response
